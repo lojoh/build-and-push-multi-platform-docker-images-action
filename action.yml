@@ -1,0 +1,73 @@
+name: Build and push multi platform docker images
+
+inputs:
+  docker-args:
+    description: "Additional arguments to pass to the docker build command"
+    default: ""
+    required: false
+    type: string
+
+  docker-context:
+    description: "The context to use for the docker build"
+    default: "."
+    required: false
+    type: string
+
+  docker-file:
+    description: "The path to the Dockerfile to use for the build"
+    required: true
+    type: string
+
+  docker-registry:
+    description: "The registry to push the image to. Example: ghcr.io/example"
+    required: true
+    type: string
+
+  github-token:
+    description: "The GitHub token to use for authentication"
+    required: true
+    type: string
+
+  image-name:
+    description: "The name of the image to build and push"
+    required: true
+    type: string
+
+  platform:
+    description: "The platform(s) to build the image for. Example: linux/arm64,linux/amd64"
+    default: ""
+    required: false
+    type: string
+
+  tag:
+    description: "The tag to apply to the image"
+    required: true
+    type: string
+
+runs:
+  using: "composite"
+  steps:
+    - name: Create build variables
+      shell: bash
+      run: echo 'image-ref=${{ inputs.docker-registry }}/${{ inputs.image-name }}:${{ inputs.tag }}' >> $GITHUB_ENV
+
+    - name: Login to GitHub Packages
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ inputs.docker-registry }}
+        username: ${{ github.actor }}
+        password: ${{ inputs.github-token }}
+
+    - name: Build Docker image
+      shell: bash
+      run: |
+        docker context create builders
+        docker buildx create --use --name mybuild default
+        docker buildx build \
+        --push \
+        ${{ inputs.docker-args }} \
+        ${{ inputs.docker-context }} \
+        --file ${{ inputs.docker-file }} \
+        --tag ${{ env.image-ref }} \
+        --platform=${{ inputs.platform }} \
+        --provenance=false
