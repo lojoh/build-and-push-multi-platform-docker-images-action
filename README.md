@@ -19,7 +19,7 @@ A Github Action used to build multiplatform docker images and push them to a Doc
   with:
     docker-args: --build-arg GitHubPackagesAccessToken=${{ secrets.GITHUB_TOKEN }}
     docker-context: .
-    docker-file: src/DemoApp/Dockerfile
+    docker-file: src/ExampleApp/Dockerfile
     docker-registry: ghcr.io/lojoh
     github-token: ${{ secrets.GITHUB_TOKEN }}
     image-name: multi-platform-demo-app
