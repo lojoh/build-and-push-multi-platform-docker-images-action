@@ -2,16 +2,16 @@
 
 A Github Action used to build multiplatform docker images and push them to a Docker container registry.
 
-## Table of Contents
+# Table of Contents
 
 - [Build and push multi platform docker images](#build-and-push-multi-platform-docker-images)
-  - [Table of Contents](#table-of-contents)
-  - [Example usage](#example-usage)
-    - [build-and-push-multiplatform-docker-images](#build-and-push-multiplatform-docker-images)
+- [Table of Contents](#table-of-contents)
+- [Example usage](#example-usage)
+  - [build-and-push-multiplatform-docker-images](#build-and-push-multiplatform-docker-images)
 
-## Example usage
+# Example usage
 
-### build-and-push-multiplatform-docker-images
+## build-and-push-multiplatform-docker-images
 
 ```yaml
 - name: Build a multiplatform Docker container and push it to Docker container registry
