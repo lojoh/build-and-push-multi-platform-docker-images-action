@@ -9,7 +9,7 @@ A Github Action used to build multiplatform docker images and push them to a Doc
 - [Example usage](#example-usage)
   - [build-and-push-multiplatform-docker-images](#build-and-push-multiplatform-docker-images)
 - [Compatibility](#compatibility)
-  - [V1](#v1)
+  - [v1.0](#v10)
 
 # Example usage
 
@@ -43,7 +43,7 @@ FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
 # Compatibility
 
-## V1
+## [v1.0](https://github.com/lojoh/gh-action-build-and-push-multi-platform-docker-images/releases/tag/1.0)
 
 Supported runners:
 
