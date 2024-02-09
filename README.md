@@ -7,13 +7,10 @@ A Github Action used to build multiplatform docker images and push them to a Doc
 - [Build and push multi platform docker images](#build-and-push-multi-platform-docker-images)
 - [Table of Contents](#table-of-contents)
 - [Example usage](#example-usage)
-  - [build-and-push-multiplatform-docker-images](#build-and-push-multiplatform-docker-images)
 - [Compatibility](#compatibility)
   - [v1.0](#v10)
 
 # Example usage
-
-## build-and-push-multiplatform-docker-images
 
 Add this to your github action workflow:
 
