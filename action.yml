@@ -1,4 +1,5 @@
 name: Build and push multi platform docker images
+description: Build and push multi platform docker images
 
 inputs:
   docker-args:
