@@ -19,7 +19,7 @@ Add this to your github action workflow:
 
 ```yaml
 - name: Build a multiplatform Docker container and push it to Docker container registry
-  uses: lojoh/gh-action-build-and-push-multi-platform-docker-images@v1.0
+  uses: lojoh/build-and-push-multi-platform-docker-images-action@v1.0
   with:
     docker-args: --build-arg GitHubPackagesAccessToken=${{ secrets.GITHUB_TOKEN }}
     docker-context: .
