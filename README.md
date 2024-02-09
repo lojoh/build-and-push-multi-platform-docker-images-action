@@ -48,10 +48,10 @@ FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 Supported runners:
 
 - `ubuntu-latest`
-- other runners are not tested. I encourage you to try!
+- other runners are not tested but may work.
 
 Supported frameworks & languages:
 
 - `.NET 7`
 - `.NET 8`
-- other frameworks or languages are not tested. I encourage you to try!
+- other frameworks or languages are not tested but may work.
