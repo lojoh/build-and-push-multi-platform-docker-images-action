@@ -1,5 +1,8 @@
 name: Build and push multi platform docker images
 description: Build and push multi platform docker images
+branding:
+  icon: "box"
+  color: "blue"
 
 inputs:
   docker-args:
