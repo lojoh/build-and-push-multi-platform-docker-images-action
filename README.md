@@ -12,7 +12,7 @@ A Github Action used to build multiplatform docker images and push them to a Doc
 
 # Example usage
 
-https://github.com/lojoh/build-and-push-multi-platform-docker-images-action/blob/main/example_workflow.yml
+https://github.com/lojoh/build-and-push-multi-platform-docker-images-action/blob/b05bbb5d0743547d680d20c6cf408e82c518dfac/example_workflow.yml#L1-L54
 
 Be sure to update your Dockerfile with ARG BUILDPLATFORM and use it as demonstrated below:
 
