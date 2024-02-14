@@ -12,7 +12,23 @@ A Github Action used to build multiplatform docker images and push them to a Doc
 
 # Example usage
 
-https://github.com/lojoh/build-and-push-multi-platform-docker-images-action/blob/main/example_workflow.yml#L34-L45
+See an example workflow file here: [example_workflow.yml](https://github.com/lojoh/build-and-push-multi-platform-docker-images-action/blob/main/example_workflow.yml).
+
+Preview:
+
+```yaml
+- name: Build Docker container and push it to GitHub Packages
+  uses: lojoh/build-and-push-multi-platform-docker-images-action@1.0
+  with:
+    docker-args: --build-arg GitHubPackagesAccessToken=${{ secrets.PAT }} --build-arg ReleaseVersion=${{ steps.version.outputs.version }}
+    docker-context: .
+    docker-file: src/DemoApp/Dockerfile
+    docker-registry: ghcr.io/lojoh
+    github-token: ${{ secrets.PAT }}
+    image-name: multi-platform-demo-app
+    tag: 1.2.3
+    platform: linux/arm64,linux/amd64
+```
 
 Be sure to update your Dockerfile with ARG BUILDPLATFORM and use it as demonstrated below:
 
