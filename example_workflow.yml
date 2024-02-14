@@ -22,14 +22,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Generate a semantic version number based on the latest tag
-      # This is only here for demonstration purposes, you can skip this step.
-      - uses: lojoh/lojoh-github-actions-private/.github/actions/generate-semantic-version-number@2.0
-        id: version
-
-      - name: Use version number
-        run: echo ${{ steps.version.outputs.version }}
-
       ### DEMO
       # This is an example of how you can use this action to build and push a multi-platform Docker image
       - name: Build Docker container and push it to GitHub Packages
@@ -41,14 +33,6 @@ jobs:
           docker-registry: ghcr.io/lojoh
           github-token: ${{ secrets.PAT }}
           image-name: multi-platform-demo-app
-          tag: ${{ steps.version.outputs.version }}
+          tag: 1.2.3
           platform: linux/arm64,linux/amd64
       ### END OF DEMO
-
-      # Create a git tag and push it if on the main branch
-      # This is only here for demonstration purposes, you can skip this step.
-      - name: Create git tag and push if on main branch
-        uses: lojoh/lojoh-github-actions-private/.github/actions/git-tag-and-push@2.0
-        if: ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request') && github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
-        with:
-          tag: ${{ steps.version.outputs.version }}
