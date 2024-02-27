@@ -53,7 +53,6 @@ inputs:
     type: string
 
 runs:
-  using: "composite"
   steps:
     - name: Create build variables
       shell: bash
@@ -61,7 +60,6 @@ runs:
 
     # Setup QEMU & Docker buildx
     - name: QEMU Setup
-      shell: bash
       uses: docker/setup-qemu-action@v3
 
     - name: Builders
