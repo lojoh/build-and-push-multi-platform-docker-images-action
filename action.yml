@@ -55,7 +55,6 @@ runs:
       shell: bash
       run: echo 'image-ref=${{ inputs.docker-registry }}/${{ inputs.image-name }}:${{ inputs.tag }}' >> $GITHUB_ENV
 
-    # Setup QEMU & Docker buildx
     - name: QEMU Setup
       uses: docker/setup-qemu-action@v3
 
@@ -68,15 +67,6 @@ runs:
       with:
         version: latest
         endpoint: builders
-        # driver-opts: |
-        #   env.http_proxy=http://proxy.sr.se:8080
-        #   env.https_proxy=http://proxy.sr.se:8080
-        #   env.no_proxy=.sr.se
-        # config-inline: |
-        #   [registry.${{ inputs.docker-registry }}]
-        #   ca=["/etc/ssl/certs/ca-certificates.crt"]
-
-    ## Setup QEMU & Docker buildx done
 
     - name: Login to GitHub Packages
       uses: docker/login-action@v3
@@ -84,20 +74,6 @@ runs:
         registry: ${{ inputs.docker-registry }}
         username: ${{ github.actor }}
         password: ${{ inputs.github-token }}
-
-    # - name: Build Docker image
-    #   shell: bash
-    #   run: |
-    #     docker context create builders
-    #     docker buildx create --use --name mybuild default
-    #     docker buildx build \
-    #     --push \
-    #     ${{ inputs.docker-args }} \
-    #     ${{ inputs.docker-context }} \
-    #     --file ${{ inputs.docker-file }} \
-    #     --tag ${{ env.image-ref }} \
-    #     --platform=${{ inputs.platform }} \
-    #     --provenance=false
 
     - name: Build Docker Image
       uses: docker/build-push-action@v5
@@ -108,12 +84,6 @@ runs:
         push: true
         file: ${{ inputs.docker-file }}
         provenance: false
-        # build-args: |
-        #   HTTP_PROXY=http://proxy.sr.se:8080
-        #   HTTPS_PROXY=http://proxy.sr.se:8080
-        #   NO_PROXY=.sr.se
-        #   APP_VERSION=${{ inputs.version }}
-        #   ${{ inputs.docker-args }}
         build-args: |
           GitHubPackagesAccessToken=${{ inputs.github-token }}
           ${{ inputs.docker-args }}
