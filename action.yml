@@ -27,6 +27,10 @@ inputs:
     required: true
     type: string
 
+  github-packages-access-token:
+    description: "The GitHub token to use for authentication"
+    required: false
+
   github-token:
     description: "The GitHub token to use for authentication"
     required: true
@@ -47,10 +51,6 @@ inputs:
     description: "The tag to apply to the image"
     required: true
     type: string
-secrets:
-  github-token:
-    description: "The GitHub token to use for authentication"
-    required: false
 
 runs:
   using: "composite"
@@ -117,5 +117,5 @@ runs:
         #   APP_VERSION=${{ inputs.version }}
         #   ${{ inputs.docker-args }}
         build-args: |
-          ${{ secrets.github-token }}
+          GitHubPackagesAccessToken=${{ inputs.github-packages-access-token }}
           ${{ inputs.docker-args }}
