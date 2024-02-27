@@ -27,10 +27,6 @@ inputs:
     required: true
     type: string
 
-  github-packages-access-token:
-    description: "The GitHub token to use for authentication"
-    required: false
-
   github-token:
     description: "The GitHub token to use for authentication"
     required: true
@@ -118,5 +114,5 @@ runs:
         #   APP_VERSION=${{ inputs.version }}
         #   ${{ inputs.docker-args }}
         build-args: |
-          GitHubPackagesAccessToken=${{ inputs.github-packages-access-token }}
+          GitHubPackagesAccessToken=${{ inputs.github-token }}
           ${{ inputs.docker-args }}
