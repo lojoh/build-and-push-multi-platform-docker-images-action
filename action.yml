@@ -107,6 +107,7 @@ runs:
         tags: ${{ env.image-ref }}
         push: true
         file: ${{ inputs.docker-file }}
+        provenance: false
         # build-args: |
         #   HTTP_PROXY=http://proxy.sr.se:8080
         #   HTTPS_PROXY=http://proxy.sr.se:8080
