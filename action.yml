@@ -9,7 +9,7 @@ inputs:
     description: "Additional arguments to pass to the docker build command"
     default: ""
     required: false
-    type: string
+    type: list
 
   docker-context:
     description: "The context to use for the docker build"
@@ -33,7 +33,7 @@ inputs:
     type: string
 
   image-name:
-    description: "The name of the image to build and push"
+    description: "The name of the image to build and push. Example my-app"
     required: true
     type: string
 
@@ -44,7 +44,7 @@ inputs:
     type: string
 
   tag:
-    description: "The tag to apply to the image"
+    description: "The tag to apply to the image. Example: 1.2.3"
     required: true
     type: string
 
