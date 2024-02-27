@@ -63,6 +63,7 @@ runs:
       uses: docker/setup-qemu-action@v3
 
     - name: Builders
+      shell: bash
       run: docker context create builders
 
     - name: Buildx Setup
