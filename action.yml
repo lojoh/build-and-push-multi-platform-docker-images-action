@@ -76,9 +76,9 @@ runs:
         #   env.http_proxy=http://proxy.sr.se:8080
         #   env.https_proxy=http://proxy.sr.se:8080
         #   env.no_proxy=.sr.se
-        config-inline: |
-          [registry.${{ inputs.docker-registry }}]
-          ca=["/etc/ssl/certs/ca-certificates.crt"]
+        # config-inline: |
+        #   [registry.${{ inputs.docker-registry }}]
+        #   ca=["/etc/ssl/certs/ca-certificates.crt"]
 
     ## Setup QEMU & Docker buildx done
 
