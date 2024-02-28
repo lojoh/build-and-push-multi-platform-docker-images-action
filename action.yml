@@ -83,7 +83,6 @@ runs:
         tags: ${{ env.image-ref }}
         push: true
         file: ${{ inputs.docker-file }}
-        provenance: false
         build-args: |
           GitHubPackagesAccessToken=${{ inputs.github-token }}
           ${{ inputs.docker-args }}
