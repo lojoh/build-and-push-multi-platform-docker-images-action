@@ -25,9 +25,10 @@ jobs:
       ### DEMO
       # This is an example of how you can use this action to build and push a multi-platform Docker image
       - name: Build Docker container and push it to GitHub Packages
-        uses: lojoh/build-and-push-multi-platform-docker-images-action@1.0
+        uses: lojoh/build-and-push-multi-platform-docker-images-action@2.0
         with:
-          docker-args: --build-arg GitHubPackagesAccessToken=${{ secrets.PAT }} --build-arg ReleaseVersion=${{ steps.version.outputs.version }}
+          docker-args: |
+            ReleaseVersion=${{ steps.version.outputs.version }}
           docker-context: .
           docker-file: src/DemoApp/Dockerfile
           docker-registry: ghcr.io/lojoh

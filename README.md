@@ -7,8 +7,6 @@ A Github Action used to build multiplatform docker images and push them to a Doc
 - [Build and push multi platform docker images](#build-and-push-multi-platform-docker-images)
 - [Table of Contents](#table-of-contents)
 - [Example usage](#example-usage)
-- [Compatibility](#compatibility)
-  - [v1.0](#v10)
 
 # Example usage
 
@@ -18,9 +16,10 @@ Preview:
 
 ```yaml
 - name: Build Docker container and push it to GitHub Packages
-  uses: lojoh/build-and-push-multi-platform-docker-images-action@1.0
+  uses: lojoh/build-and-push-multi-platform-docker-images-action@2.0
   with:
-    docker-args: --build-arg GitHubPackagesAccessToken=${{ secrets.PAT }} --build-arg ReleaseVersion=${{ steps.version.outputs.version }}
+    docker-args: |
+      ReleaseVersion=${{ steps.version.outputs.version }}
     docker-context: .
     docker-file: src/DemoApp/Dockerfile
     docker-registry: ghcr.io/lojoh
@@ -39,18 +38,3 @@ WORKDIR /app
 ARG BUILDPLATFORM
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ```
-
-# Compatibility
-
-## [v1.0](https://github.com/lojoh/gh-action-build-and-push-multi-platform-docker-images/releases/tag/1.0)
-
-Supported runners:
-
-- `ubuntu-latest`
-- other runners are not tested but may work.
-
-Supported frameworks & languages:
-
-- `.NET 7`
-- `.NET 8`
-- other frameworks or languages are not tested but may work.
